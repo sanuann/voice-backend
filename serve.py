@@ -123,8 +123,8 @@ async def generate_token(request):
         project = args['project'][0]
     client_auth_token = project + '-' + uuid.uuid4().hex
     expiry_minutes = 90
-    if 'expiry_minutes' in request.args:
-        expiry_minutes = int(request.args['expiry_minutes'][0])
+    if 'expiry_time' in request.args:
+        expiry_minutes = int(request.args['expiry_time'][0])
     # token expiration delay
     expiry_time = timedelta(minutes=expiry_minutes)
     expiration = datetime.now(timezone.utc) + expiry_time
